@@ -1,4 +1,4 @@
-    /**
+<script>    /**
      * boxzilla minimized mode - hotjar poll style implementation
      *
      * box can be minimized, but not dismissed. after first dismissal, triggers
@@ -18,7 +18,7 @@
         }
 
         //set the slug for the box you want to apply this to.
-        var boxzillaSlug = "the-post-slug-of-your-boxzilla-box-goes-here";
+        var boxzillaSlug = "SLUG OF BOXZILLA";
 
         /**
          * overrides `Box.prototype.toggle()`
@@ -104,6 +104,7 @@
                     // @see http://stackoverflow.com/a/24446288/35946
                     $( box.element ).on( "click", "." + box.closeIcon.className, function( e ) {
                         dismissMinimize.call( box, e );
+
                     } );
 
                     box.mayAutoShow = function() {
@@ -130,6 +131,8 @@
          */
         Boxzilla.on( "box.show", function( box ) {
 
+document.getElementById("IDBOXZILLA").classList.remove('MyClass');
+
             if ( boxzillaSlug !== box.config.post.slug ) {
                 return;
             }
@@ -149,13 +152,15 @@
          * @since 2017.02.05
          */
         Boxzilla.on( "box.hide", function( box ) {
+            
+document.getElementById("IDBOXZILLA").classList.add('MyClass');
 
             if ( boxzillaSlug !== box.config.post.slug ) {
                 return;
             }
 
             $( box.element )
-                .css( { "display": "block", "max-height": "none", "overflow": "hidden", "visibility": "hidden" } )
+                .css( { "display": "block", "max-height": "34px", "overflow": "hidden", "visibility": "hidden" } )
                 .css( { "max-height": $( box.element ).find( ".gform_heading" ).outerHeight() + "px" } )
                 .css( { "visibility": "visible" } )
             ;
@@ -163,7 +168,6 @@
             $( box.element ).find( ".boxzilla-close-icon" ).html( "&#x25B4;" );
 
             box.minimized = true;
-
         } );
 
-    } );
+    } );</script>
